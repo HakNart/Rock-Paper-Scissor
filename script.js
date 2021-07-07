@@ -11,26 +11,35 @@ function playRound(playerSelection, computerSelection) {
     let winningMsg = `${message}\nYou win! ${playerSelection} beats ${computerSelection}`;
     let losingMsg = `${message}\nYou lose! ${computerSelection} beats ${playerSelection}`;
     if (playerSelection.toLowerCase() === computerSelection) {
-        return(`${message}\nIt's a draw.`);
+        return('draw');
     } else {
         if (playerSelection.toLowerCase() === 'rock') {
             if (computerSelection === 'paper') {
-                return(losingMsg);
+                return 'lose'
             } else {
-                return(winningMsg);
+                playerScore++
+                return 'win'
             }
         } else if (playerSelection.toLowerCase() === 'paper') {
             if (computerSelection === 'rock') {
-                return(winningMsg);
+                return 'win';
             } else {
-                return(losingMsg);
+                return 'lose'
             }
         } else if (playerSelection.toLowerCase() === 'scissor') {
             if (computerSelection === 'rock') {
-                return(losingMsg);
+                return 'lose'
             } else {
-                return(winningMsg);
+                return 'win'
             }
         }
     }
+}
+
+function displayMessage(playerSelection, computerSelection, result) {
+    let message = `You pick ${playerSelection}, and the computer picks ${computerSelection}`;
+    let winningMsg = `${message}\nYou win! ${playerSelection} beats ${computerSelection}`;
+    let losingMsg = `${message}\nYou lose! ${computerSelection} beats ${playerSelection}`;
+    let drawMsg = `${message}\nIt's a draw.`
+    return (result === 'draw') ? drawMsg : (result === 'lose') ? losingMsg : winningMsg;
 }
