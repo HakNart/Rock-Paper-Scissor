@@ -17,7 +17,6 @@ function playRound(playerSelection, computerSelection) {
             if (computerSelection === 'paper') {
                 return 'lose'
             } else {
-                playerScore++
                 return 'win'
             }
         } else if (playerSelection.toLowerCase() === 'paper') {
@@ -42,4 +41,22 @@ function displayMessage(playerSelection, computerSelection, result) {
     let losingMsg = `${message}\nYou lose! ${computerSelection} beats ${playerSelection}`;
     let drawMsg = `${message}\nIt's a draw.`
     return (result === 'draw') ? drawMsg : (result === 'lose') ? losingMsg : winningMsg;
+}
+
+function game() {
+    let computerSelection = computerPlay();
+    let playerSelection = prompt("Please pick rock, paper, or scissor");
+
+    let playerScore = 0;
+    let computerScore = 0;
+
+    let result = playRound(playerSelection, computerSelection);
+    if (result === 'win') {
+        playerScore++;
+    } else if (result === 'lose') {
+        computerScore++;
+    }
+    let message = displayMessage(playerSelection, computerSelection, result);
+
+    return message;
 }
