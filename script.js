@@ -36,9 +36,9 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function displayMessage(playerSelection, computerSelection, result) {
-    let message = `You pick ${playerSelection}, and the computer picks ${computerSelection}`;
-    let winningMsg = `${message}\nYou win! ${playerSelection} beats ${computerSelection}`;
-    let losingMsg = `${message}\nYou lose! ${computerSelection} beats ${playerSelection}`;
+    let message = `You pick ${playerSelection.toLowerCase()}, and the computer picks ${computerSelection}`;
+    let winningMsg = `${message}\nYou win! ${playerSelection.toLowerCase()} beats ${computerSelection}`;
+    let losingMsg = `${message}\nYou lose! ${computerSelection.toLowerCase()} beats ${playerSelection}`;
     let drawMsg = `${message}\nIt's a draw.`
     return (result === 'draw') ? drawMsg : (result === 'lose') ? losingMsg : winningMsg;
 }
