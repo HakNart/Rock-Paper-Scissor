@@ -58,5 +58,19 @@ function game() {
         }
         let message = displayMessage(playerSelection, computerSelection, result);
         console.log(message)
+        console.log(`Score: ${playerScore} - ${computerScore}`);
     }
+
+    console.log("Game End!!!")
+    switch(true) {
+        case playerScore === computerScore:
+            console.log(`It is a tie.`);
+            break;
+        case playerScore > computerScore:
+            console.log(`You are the winner.`);
+            break;
+        default:
+            console.log(`You lost.`)
+    }
+    console.log(`The final score is ${playerScore} to ${computerScore}`);
 }
