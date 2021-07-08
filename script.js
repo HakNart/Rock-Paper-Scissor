@@ -44,19 +44,19 @@ function displayMessage(playerSelection, computerSelection, result) {
 }
 
 function game() {
-    let computerSelection = computerPlay();
-    let playerSelection = prompt("Please pick rock, paper, or scissor");
-
     let playerScore = 0;
     let computerScore = 0;
 
-    let result = playRound(playerSelection, computerSelection);
-    if (result === 'win') {
-        playerScore++;
-    } else if (result === 'lose') {
-        computerScore++;
+    for (let i = 0; i < 5; i++) {
+        let computerSelection = computerPlay();
+        let playerSelection = prompt("Please pick rock, paper, or scissor");
+        let result = playRound(playerSelection, computerSelection);
+        if (result === 'win') {
+            playerScore++;
+        } else if (result === 'lose') {
+            computerScore++;
+        }
+        let message = displayMessage(playerSelection, computerSelection, result);
+        console.log(message)
     }
-    let message = displayMessage(playerSelection, computerSelection, result);
-
-    return message;
 }
