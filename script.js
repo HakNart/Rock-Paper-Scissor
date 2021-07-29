@@ -60,3 +60,14 @@ function game() {
 
     return message;
 }
+
+// Player can click the button and the choice is exeucted
+// const rock = document.querySelector("#rock");
+// const paper = document.querySelector('#paper');
+// const scissor = document.querySelector('#scissor');
+const choices = document.querySelectorAll('#choices button');
+choices.forEach(choice => {
+    choice.addEventListener('click', () => {
+        console.log(choice.getAttribute('data-key'));
+    })
+});
