@@ -50,15 +50,18 @@ function game() {
     let computerSelection = computerPlay();
     let playerSelection = this.getAttribute('data-key');
 
-    cPick.innerText = computerSelection;
-    pPick.innerText = playerSelection;
-
     let result = playRound(playerSelection, computerSelection);
     if (result === 'win') {
         pScore++;
     } else if (result === 'lose') {
         cScore++;
     }
+
+    cPick.innerText = computerSelection;
+    pPick.innerText = playerSelection;
+    playerScore.innerText = pScore;
+    computerScore.innerText = cScore;
+
     let message = displayMessage(playerSelection, computerSelection, result);
     console.log(message);
     console.log(pScore);
