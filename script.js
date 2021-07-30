@@ -50,6 +50,9 @@ function game() {
     let computerSelection = computerPlay();
     let playerSelection = this.getAttribute('data-key');
 
+    cPick.innerText = computerSelection;
+    pPick.innerText = playerSelection;
+
     let result = playRound(playerSelection, computerSelection);
     if (result === 'win') {
         pScore++;
@@ -70,8 +73,11 @@ let cScore = 0;
 const playerScore = document.querySelector('.player-score');
 const computerScore = document.querySelector('.computer-score');
 
+// Select elements to display player and computer picks
+const pPick = document.querySelector(".player-pick");
+const cPick = document.querySelector(".computer-pick");
 
 const choices = document.querySelectorAll('#choices button');
 choices.forEach(choice => {
-    choice.addEventListener('click', game);   
+    choice.addEventListener('click', game);
 });
