@@ -2,14 +2,11 @@ function computerPlay() {
     let choices = ['rock', 'paper', 'scissor'];
 
     let computerPick = choices[Math.floor(Math.random()*choices.length)];
-    console.log(computerPick);
+    // console.log(computerPick);
     return computerPick;
 }
 
 function playRound(playerSelection, computerSelection) {
-    let message = `You pick ${playerSelection}, and the computer picks ${computerSelection}`;
-    let winningMsg = `${message}\nYou win! ${playerSelection} beats ${computerSelection}`;
-    let losingMsg = `${message}\nYou lose! ${computerSelection} beats ${playerSelection}`;
     if (playerSelection.toLowerCase() === computerSelection) {
         return('draw');
     } else {
@@ -45,29 +42,36 @@ function displayMessage(playerSelection, computerSelection, result) {
 
 function game() {
     let computerSelection = computerPlay();
-    let playerSelection = prompt("Please pick rock, paper, or scissor");
+    let playerSelection = this.getAttribute('data-key');
+    console.log(playerSelection);
 
-    let playerScore = 0;
-    let computerScore = 0;
 
     let result = playRound(playerSelection, computerSelection);
     if (result === 'win') {
-        playerScore++;
+        pScore++;
     } else if (result === 'lose') {
-        computerScore++;
+        cScore++;
     }
     let message = displayMessage(playerSelection, computerSelection, result);
-
-    return message;
+    console.log(message);
+    console.log(pScore);
+    console.log(cScore);
 }
 
 // Player can click the button and the choice is exeucted
 // const rock = document.querySelector("#rock");
 // const paper = document.querySelector('#paper');
 // const scissor = document.querySelector('#scissor');
+
+// Assign inital score for player and computer
+let pScore = 0;
+let cScore = 0;
+
+// Select elements to display player and computer scores
+const playerScore = document.querySelector('.player-score');
+const computerScore = document.querySelector('.computer-score');
+
 const choices = document.querySelectorAll('#choices button');
 choices.forEach(choice => {
-    choice.addEventListener('click', () => {
-        console.log(choice.getAttribute('data-key'));
-    })
+    choice.addEventListener('click', game);   
 });
