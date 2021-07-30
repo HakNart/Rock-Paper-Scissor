@@ -40,11 +40,15 @@ function displayMessage(playerSelection, computerSelection, result) {
     return (result === 'draw') ? drawMsg : (result === 'lose') ? losingMsg : winningMsg;
 }
 
+function gameReset() {
+    pScore = 0;
+    cScore = 0;
+}
+
 function game() {
+    if (pScore === 5 || cScore === 5) { gameReset(); }
     let computerSelection = computerPlay();
     let playerSelection = this.getAttribute('data-key');
-    console.log(playerSelection);
-
 
     let result = playRound(playerSelection, computerSelection);
     if (result === 'win') {
@@ -58,11 +62,6 @@ function game() {
     console.log(cScore);
 }
 
-// Player can click the button and the choice is exeucted
-// const rock = document.querySelector("#rock");
-// const paper = document.querySelector('#paper');
-// const scissor = document.querySelector('#scissor');
-
 // Assign inital score for player and computer
 let pScore = 0;
 let cScore = 0;
@@ -70,6 +69,7 @@ let cScore = 0;
 // Select elements to display player and computer scores
 const playerScore = document.querySelector('.player-score');
 const computerScore = document.querySelector('.computer-score');
+
 
 const choices = document.querySelectorAll('#choices button');
 choices.forEach(choice => {
