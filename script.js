@@ -49,6 +49,10 @@ function displayScore() {
     computerScore.innerText = cScore;
 }
 
+function checkWinner() {
+    return result = (pScore == 5) ? 'win' : 'lose'; 
+}
+
 function game() {
     if (pScore < 5 && cScore <5) {
         let computerSelection = computerPlay();
@@ -70,7 +74,7 @@ function game() {
         displayScore();
     }
     else { 
-        message.innerText = "End of Game"    
+        message.innerText = `You ${checkWinner()} the game.\nReset play again`;    
         return; 
     }
 }
@@ -95,8 +99,8 @@ const reset = document.querySelector("#reset");
 reset.addEventListener('click', gameReset);
 
 // Display messages
-let winMsg = "You win!";
-let lossMsg = 'You lose!';
+let winMsg = "You win the round!";
+let lossMsg = 'You lose the round!';
 let drawMsg = "It's a draw"
 
 const choices = document.querySelectorAll('#choices button');
