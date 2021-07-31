@@ -41,6 +41,12 @@ function displayMessage(playerSelection, computerSelection, result) {
 function gameReset() {
     pScore = 0;
     cScore = 0;
+    displayScore();
+}
+
+function displayScore() {
+    playerScore.innerText = pScore;
+    computerScore.innerText = cScore;
 }
 
 function game() {
@@ -61,8 +67,7 @@ function game() {
 
     cPick.innerText = computerSelection;
     pPick.innerText = playerSelection;
-    playerScore.innerText = pScore;
-    computerScore.innerText = cScore;
+    displayScore();
 
     let messageConsole = displayMessage(playerSelection, computerSelection, result);
     console.log(messageConsole);
