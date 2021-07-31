@@ -1,8 +1,6 @@
 function computerPlay() {
     let choices = ['rock', 'paper', 'scissor'];
-
     let computerPick = choices[Math.floor(Math.random()*choices.length)];
-    // console.log(computerPick);
     return computerPick;
 }
 
@@ -53,8 +51,12 @@ function game() {
     let result = playRound(playerSelection, computerSelection);
     if (result === 'win') {
         pScore++;
+        message.innerText = winMsg;
     } else if (result === 'lose') {
         cScore++;
+        message.innerText = lossMsg;
+    } else {
+        message.innerText = drawMsg;
     }
 
     cPick.innerText = computerSelection;
@@ -62,10 +64,8 @@ function game() {
     playerScore.innerText = pScore;
     computerScore.innerText = cScore;
 
-    let message = displayMessage(playerSelection, computerSelection, result);
-    console.log(message);
-    console.log(pScore);
-    console.log(cScore);
+    let messageConsole = displayMessage(playerSelection, computerSelection, result);
+    console.log(messageConsole);
 }
 
 // Assign inital score for player and computer
@@ -80,7 +80,16 @@ const computerScore = document.querySelector('.computer-score');
 const pPick = document.querySelector(".player-pick");
 const cPick = document.querySelector(".computer-pick");
 
+// Select element that displays the game status
+const message = document.querySelector("#message-board");
+
+// Display messages
+let winMsg = "You win!";
+let lossMsg = 'You lose!';
+let drawMsg = "It's a draw"
+
 const choices = document.querySelectorAll('#choices button');
 choices.forEach(choice => {
     choice.addEventListener('click', game);
 });
+
