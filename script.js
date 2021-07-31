@@ -50,27 +50,29 @@ function displayScore() {
 }
 
 function game() {
-    if (pScore === 5 || cScore === 5) { return; }
-    let computerSelection = computerPlay();
-    let playerSelection = this.getAttribute('data-key');
+    if (pScore < 5 && cScore <5) {
+        let computerSelection = computerPlay();
+        let playerSelection = this.getAttribute('data-key');
 
-    let result = playRound(playerSelection, computerSelection);
-    if (result === 'win') {
-        pScore++;
-        message.innerText = winMsg;
-    } else if (result === 'lose') {
-        cScore++;
-        message.innerText = lossMsg;
-    } else {
-        message.innerText = drawMsg;
+        let result = playRound(playerSelection, computerSelection);
+        if (result === 'win') {
+            pScore++;
+            message.innerText = winMsg;
+        } else if (result === 'lose') {
+            cScore++;
+            message.innerText = lossMsg;
+        } else {
+            message.innerText = drawMsg;
+        }
+
+        cPick.innerText = computerSelection;
+        pPick.innerText = playerSelection;
+        displayScore();
     }
-
-    cPick.innerText = computerSelection;
-    pPick.innerText = playerSelection;
-    displayScore();
-
-    let messageConsole = displayMessage(playerSelection, computerSelection, result);
-    console.log(messageConsole);
+    else { 
+        message.innerText = "End of Game"    
+        return; 
+    }
 }
 
 // Assign inital score for player and computer
