@@ -44,7 +44,7 @@ function gameReset() {
 }
 
 function game() {
-    if (pScore === 5 || cScore === 5) { gameReset(); }
+    if (pScore === 5 || cScore === 5) { return; }
     let computerSelection = computerPlay();
     let playerSelection = this.getAttribute('data-key');
 
@@ -82,6 +82,10 @@ const cPick = document.querySelector(".computer-pick");
 
 // Select element that displays the game status
 const message = document.querySelector("#message-board");
+
+// Select reset button and have the game score reset once clicked
+const reset = document.querySelector("#reset");
+reset.addEventListener('click', gameReset);
 
 // Display messages
 let winMsg = "You win!";
