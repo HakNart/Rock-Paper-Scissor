@@ -1,13 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@1,300&family=Chakra+Petch:ital,wght@1,600&display=swap');
+
 html,body {
     margin: 0;
     height: 100%;
 }
 
-body {
+body { 
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    background-color: hsl(0, 0%, 91%);
+    font-family: 'Bai Jamjuree', sans-serif;
 }
 
 #display-score {
@@ -20,4 +24,9 @@ body {
     width: 300px;
     display: flex;
     justify-content: space-evenly;
+}
+
+h1 {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 2.5rem;
 }
