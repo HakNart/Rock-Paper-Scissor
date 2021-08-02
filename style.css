@@ -14,6 +14,11 @@ body {
     font-family: 'Bai Jamjuree', sans-serif;
 }
 
+body > * {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 #display-score {
     width: 300px;
     display: flex;
