@@ -53,6 +53,23 @@ function checkWinner() {
     return result = (pScore == 5) ? 'win' : 'lose'; 
 }
 
+function displayPick(player, selection) {
+    let source = "";
+    switch (selection) {
+        case 'rock':
+            source = 'url(./assets/rock.png)';
+            break;
+        case 'paper':
+            source = 'url(./assets/paper.png)';
+            break;
+        case 'scissor':
+            source = 'url(./assets/paper.png)';
+            break;
+    }    
+    console.log(source);
+    player.style['background-image'] = source;
+}
+
 function game() {
     if (pScore < 5 && cScore <5) {
         let computerSelection = computerPlay();
@@ -68,9 +85,9 @@ function game() {
         } else {
             message.innerText = drawMsg;
         }
-
-        cPick.innerText = computerSelection;
-        pPick.innerText = playerSelection;
+        // Update corresponding image of the choices
+        displayPick(pPick, playerSelection);
+        displayPick(cPick, computerSelection);
         displayScore();
     }
     else { 
