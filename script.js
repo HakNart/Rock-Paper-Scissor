@@ -41,6 +41,8 @@ function displayMessage(playerSelection, computerSelection, result) {
 function gameReset() {
     pScore = 0;
     cScore = 0;
+    pPick.style['background-image'] = "none";
+    cPick.style['background-image'] = "none";
     displayScore();
 }
 
@@ -66,7 +68,6 @@ function displayPick(player, selection) {
             source = 'url(./assets/paper.png)';
             break;
     }    
-    console.log(source);
     player.style['background-image'] = source;
 }
 
@@ -91,7 +92,7 @@ function game() {
         displayScore();
     }
     else { 
-        message.innerText = `You ${checkWinner()} the game.\nReset play again`;    
+        message.innerText = `You ${checkWinner()} the game.\nReset to play again`;    
         return; 
     }
 }
