@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@1,300&family=Chakra+Petch:ital,wght@1,600&display=swap');
+
+html,body {
+    margin: 0;
+    height: 100%;
+}
+
+body { 
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    background-color: hsl(0, 0%, 91%);
+    font-family: 'Bai Jamjuree', sans-serif;
+}
+
+body > * {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#display-score {
+    width: 300px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#choices {
+    width: 300px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+h1 {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 2.5rem;
+}
+
+#message-board {
+    height: 40px;
+    text-align: center;
+}
+
+.pick-pic {
+    width: 6rem;
+    height: 6rem;
+    /* background-image: url('./assets/paper.png'); */
+    background-size: contain;
+    background-repeat: no-repeat;
+}

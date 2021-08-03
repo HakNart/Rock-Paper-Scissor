@@ -3,9 +3,32 @@
     <head>
         <title>Rock Paper Scissor</title>
         <meta charset='utf-8'>
-        <script src='./script.js' ></script>
+        <link rel="stylesheet" href="./normalize.css">
+        <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-
+        <h1>ROCK PAPER SCISSOR</h1>
+        <p>First to have 5 points wins</p>
+        <div id='message-board'></div>
+        <div id='display-score'>
+            <div id='player'>
+                <p>Player score: <span class='player-score'>0</span></p>
+                <div>Player pick</div>
+                <div class='pick-pic player-pick'></div>
+            </div>            
+            <div id='computer'>
+                <p>Computer score: <span class='computer-score'>0</span></p>
+                <div>Computer pick </div>
+                <div class='pick-pic computer-pick'><div id='c-pic'></div>
+                </div>
+            </div>
+        </div>
+        <div id='choices'>
+            <button id='rock' data-key='rock'>Rock</button>
+            <button id='paper' data-key='paper'>Paper</button>
+            <button id='scissor' data-key='scissor'>Scissor</button>
+        </div>
+        <button id='reset'>Reset</button>
     </body>
+    <script src='./script.js' ></script>
 </html>

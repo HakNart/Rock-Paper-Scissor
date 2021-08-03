@@ -1,15 +1,10 @@
 function computerPlay() {
     let choices = ['rock', 'paper', 'scissor'];
-
     let computerPick = choices[Math.floor(Math.random()*choices.length)];
-    // console.log(computerPick);
     return computerPick;
 }
 
 function playRound(playerSelection, computerSelection) {
-    let message = `You pick ${playerSelection}, and the computer picks ${computerSelection}`;
-    let winningMsg = `${message}\nYou win! ${playerSelection} beats ${computerSelection}`;
-    let losingMsg = `${message}\nYou lose! ${computerSelection} beats ${playerSelection}`;
     if (playerSelection.toLowerCase() === computerSelection) {
         return('draw');
     } else {
@@ -35,42 +30,91 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function displayMessage(playerSelection, computerSelection, result) {
-    let message = `You pick ${playerSelection.toLowerCase()}, and the computer picks ${computerSelection}`;
-    let winningMsg = `${message}\nYou win! ${playerSelection.toLowerCase()} beats ${computerSelection}`;
-    let losingMsg = `${message}\nYou lose! ${computerSelection.toLowerCase()} beats ${playerSelection}`;
-    let drawMsg = `${message}\nIt's a draw.`
-    return (result === 'draw') ? drawMsg : (result === 'lose') ? losingMsg : winningMsg;
+function gameReset() {
+    pScore = 0;
+    cScore = 0;
+    pPick.style['background-image'] = "none";
+    cPick.style['background-image'] = "none";
+    displayScore();
+}
+
+function displayScore() {
+    playerScore.innerText = pScore;
+    computerScore.innerText = cScore;
+}
+
+function checkWinner() {
+    return result = (pScore == 5) ? 'win' : 'lose'; 
+}
+
+function displayPick(player, selection) {
+    let source = "";
+    switch (selection) {
+        case 'rock':
+            source = 'url(./assets/rock.png)';
+            break;
+        case 'paper':
+            source = 'url(./assets/paper.png)';
+            break;
+        case 'scissor':
+            source = 'url(./assets/paper.png)';
+            break;
+    }    
+    player.style['background-image'] = source;
 }
 
 function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for (let i = 0; i < 5; i++) {
+    if (pScore < 5 && cScore <5) {
         let computerSelection = computerPlay();
-        let playerSelection = prompt("Please pick rock, paper, or scissor");
+        let playerSelection = this.getAttribute('data-key');
+
         let result = playRound(playerSelection, computerSelection);
         if (result === 'win') {
-            playerScore++;
+            pScore++;
+            message.innerText = winMsg;
         } else if (result === 'lose') {
-            computerScore++;
+            cScore++;
+            message.innerText = lossMsg;
+        } else {
+            message.innerText = drawMsg;
         }
-        let message = displayMessage(playerSelection, computerSelection, result);
-        console.log(message)
-        console.log(`Score: ${playerScore} - ${computerScore}`);
+        // Update corresponding image of the choices
+        displayPick(pPick, playerSelection);
+        displayPick(cPick, computerSelection);
+        displayScore();
     }
-
-    console.log("Game End!!!")
-    switch(true) {
-        case playerScore === computerScore:
-            console.log(`It is a tie.`);
-            break;
-        case playerScore > computerScore:
-            console.log(`You are the winner.`);
-            break;
-        default:
-            console.log(`You lost.`)
+    else { 
+        message.innerText = `You ${checkWinner()} the game.\nReset to play again`;    
+        return; 
     }
-    console.log(`The final score is ${playerScore} to ${computerScore}`);
 }
+
+// Assign inital score for player and computer
+let pScore = 0;
+let cScore = 0;
+
+// Select elements to display player and computer scores
+const playerScore = document.querySelector('.player-score');
+const computerScore = document.querySelector('.computer-score');
+
+// Select elements to display player and computer picks
+const pPick = document.querySelector(".player-pick");
+const cPick = document.querySelector(".computer-pick");
+
+// Select element that displays the game status
+const message = document.querySelector("#message-board");
+
+// Select reset button and have the game score reset once clicked
+const reset = document.querySelector("#reset");
+reset.addEventListener('click', gameReset);
+
+// Display messages
+let winMsg = "You win the round!";
+let lossMsg = 'You lose the round!';
+let drawMsg = "It's a draw"
+
+const choices = document.querySelectorAll('#choices button');
+choices.forEach(choice => {
+    choice.addEventListener('click', game);
+});
+
